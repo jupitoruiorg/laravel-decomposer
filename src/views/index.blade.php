@@ -1,4 +1,4 @@
-@extends(config('decomposer.layout'))
+@extends('decomposer::layout')
 
 @section('content')
     @include('decomposer::body')

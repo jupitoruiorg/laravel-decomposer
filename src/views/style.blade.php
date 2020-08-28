@@ -1,13 +1,5 @@
 <!-- Styles -->
 <style>
-    body {
-        padding: 25px;
-    }
-
-    .ld-version-tag {
-        background-color: #F5716C;
-    }
-
     .bs-callout {
         padding: 20px;
         margin: 0 0 20px 0;
@@ -24,11 +16,11 @@
         color: #428bca;
     }
 
-    .glyphicon-ok {
+    .fa-check {
         color: #7ad03a;
     }
 
-    .glyphicon-remove {
+    .fa-times {
         color: red;
     }
 
