@@ -11,7 +11,7 @@ class Decomposer
      * in resolving its version number
      */
 
-    const PACKAGE_NAME = 'lubusin/laravel-decomposer';
+    const PACKAGE_NAME = 'laravel-vietnam/laravel-decomposer';
 
     /**
      * Initialise blank arrays for extra stats to be added

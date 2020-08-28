@@ -1,5 +1,5 @@
 {
-    "name": "lubusin/laravel-decomposer",
+    "name": "laravel-vietnam/laravel-decomposer",
     "description": "A Laravel package to decompose your installed packages, their dependencies, your app & server environment",
     "license": "MIT",
     "authors": [
