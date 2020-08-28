@@ -28,6 +28,6 @@ class DecomposerController extends Controller
 
         $extraStats = Decomposer::getExtraStats();
 
-        return view('Decomposer::index', compact('packages', 'laravelEnv', 'serverEnv', 'extraStats', 'serverExtras', 'laravelExtras'));
+        return view('decomposer::index', compact('packages', 'laravelEnv', 'serverEnv', 'extraStats', 'serverExtras', 'laravelExtras'));
     }
 }
