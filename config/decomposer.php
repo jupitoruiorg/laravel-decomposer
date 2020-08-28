@@ -3,10 +3,6 @@
 return [
     'view' => 'decomposer::index',
 
-    'layout' => 'decomposer::layout',
-
-    'content_section' => 'content',
-
     'folders_exclude' => [
         base_path('bootstrap'),
         'node_modules',
