@@ -2,6 +2,8 @@
 return [
     'view' => 'decomposer::index',
 
+    'content_section' => 'content',
+
     'folders_exclude' => [
         base_path() . '/bootstrap',
         base_path() . '/node_modules',
