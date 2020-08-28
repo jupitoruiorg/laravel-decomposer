@@ -24,6 +24,7 @@ class Decomposer
 
     /**
      * Get the Decomposer system report as a PHP array
+     *
      * @return array
      */
 
@@ -44,6 +45,7 @@ class Decomposer
 
     /**
      * Add Extra stats by app or any other package dev
+     *
      * @param $extraStatsArray
      */
 
@@ -54,6 +56,7 @@ class Decomposer
 
     /**
      * Add Laravel specific stats by app or any other package dev
+     *
      * @param $serverStatsArray
      */
 
@@ -64,6 +67,7 @@ class Decomposer
 
     /**
      * Add Server specific stats by app or any other package dev
+     *
      * @param $serverStatsArray
      */
 
@@ -74,6 +78,7 @@ class Decomposer
 
     /**
      * Get the extra stats added by the app or any other package dev
+     *
      * @return array
      */
 
@@ -84,6 +89,7 @@ class Decomposer
 
     /**
      * Get additional server info added by the app or any other package dev
+     *
      * @return array
      */
 
@@ -94,6 +100,7 @@ class Decomposer
 
     /**
      * Get additional laravel info added by the app or any other package dev
+     *
      * @return array
      */
 
@@ -104,7 +111,8 @@ class Decomposer
 
     /**
      * Get the Decomposer system report as JSON
-     * @return json
+     *
+     * @return false|string
      */
 
     public static function getReportJson()
@@ -114,6 +122,7 @@ class Decomposer
 
     /**
      * Get the Composer file contents as an array
+     *
      * @return array
      */
 
@@ -175,6 +184,7 @@ class Decomposer
 
     /**
      * Get PHP/Server environment details
+     *
      * @return array
      */
     public static function getServerEnv()
@@ -246,6 +256,7 @@ class Decomposer
 
     /**
      * Check if SSL is installed or not
+     *
      * @return boolean
      */
 
@@ -264,7 +275,7 @@ class Decomposer
     private static function folderSize($dir)
     {
         $size = 0;
-        foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+        foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
             if (!is_file($each) && in_array($each, config('decomposer.folders_exclude'))) {
                 continue;
             }
@@ -288,17 +299,17 @@ class Decomposer
         $tb = $gb * 1024;
 
         if (($bytes >= 0) && ($bytes < $kb)) {
-            return $bytes . ' B';
+            return $bytes.' B';
         } elseif (($bytes >= $kb) && ($bytes < $mb)) {
-            return ceil($bytes / $kb) . ' KB';
+            return ceil($bytes / $kb).' KB';
         } elseif (($bytes >= $mb) && ($bytes < $gb)) {
-            return ceil($bytes / $mb) . ' MB';
+            return ceil($bytes / $mb).' MB';
         } elseif (($bytes >= $gb) && ($bytes < $tb)) {
-            return ceil($bytes / $gb) . ' GB';
+            return ceil($bytes / $gb).' GB';
         } elseif ($bytes >= $tb) {
-            return ceil($bytes / $tb) . ' TB';
+            return ceil($bytes / $tb).' TB';
         } else {
-            return $bytes . ' B';
+            return $bytes.' B';
         }
     }
 }
