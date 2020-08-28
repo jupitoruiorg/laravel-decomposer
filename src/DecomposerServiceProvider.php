@@ -14,8 +14,6 @@ class DecomposerServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/views', 'decomposer');
         if ($this->app->runningInConsole()) {
-            echo __DIR__.'/../config/decomposer.php';
-
             $this->publishes([
                 __DIR__.'/../config/decomposer.php' => config_path('decomposer.php'),
             ], 'config');
