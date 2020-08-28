@@ -81,12 +81,18 @@
                         <tbody>
                         @foreach($packages as $package)
                             <tr>
-                                <td>{{ $package['name'] }} : <span class="label ld-version-tag">{{ $package['version'] }}</span></td>
+                                <td><a href="https://github.com/{{ $package['name'] }}" target="_blank">{{ $package['name'] }}</a> : <span
+                                        class="label ld-version-tag">{{ $package['version'] }}</span></td>
                                 <td>
                                     <ul>
                                         @if(is_array($package['dependencies']))
                                             @foreach($package['dependencies'] as $dependencyName => $dependencyVersion)
-                                                <li>{{ $dependencyName }} : <span class="label ld-version-tag">{{ $dependencyVersion }}</span></li>
+                                                @if(\Str::contains($dependencyName, '/'))
+                                                    <li><a href="https://github.com/{{ $dependencyName }}" target="_blank">{{ $dependencyName }}</a> : <span
+                                                            class="label ld-version-tag">{{ $dependencyVersion }}</span></li>
+                                                @else
+                                                    <li>{{ $dependencyName }} : <span class="label ld-version-tag">{{ $dependencyVersion }}</span></li>
+                                                @endif
                                             @endforeach
                                         @else
                                             <li><span class="label label-primary">{{ $package['dependencies'] }}</span></li>
