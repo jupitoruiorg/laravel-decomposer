@@ -2,7 +2,7 @@
 <script>
     $(document).ready(function() {
         $('#decomposer').DataTable({
-            'order': [[0, 'desc']],
+            'order': [[0, 'asc']],
             searchHighlight: true
         });
 
