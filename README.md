@@ -28,17 +28,6 @@ You can have a look at the [Roadmap](https://github.com/nguyentranchung/laravel-
 - It can also help you in other ways like suppose you have a package installed that is using illuminate/support v5.1, and an another package using illuminate/support v5.3, so getting these facts quickly by just hitting to a route can make you aware of possible unstability & conflicts so you can report that to the respective package developer.
 - It cuts down the troubleshooting time. For eg: Sometimes after trying all possible solutions at the end the user says 'I forgot to say I am on PHP 4'. Here Decomposer acts as the precaution & removes the dependency of querying the user for every single thing.
 
-## Roadmap
-
-- ~Allow Decomposer report to be accessed via code~ _Released in [v1.1](https://github.com/nguyentranchung/laravel-decomposer#helpers)_
-- ~Allow users and other packages to add their own stats in the Decomposer report~ _Released in [v1.2](https://github.com/nguyentranchung/laravel-decomposer/wiki/Add-your-extra-stats)_
-- Add a config file to allow user to control what he/she wants to see in the view
-- Check for updates of the installed packages & show if any available for the respective packages or their dependencies
-- Compare same dependency versions for different packages & warn user about the possible conflict. (Can be achieved even now as the search results highlighting is enabled, but sure it can be done in more better way)
-- Make UI more informative & UX more better
-- Let us know if you want anything to be added in the decomposer. After all the user makes the packages worth :)
-- We have created the [issues](https://github.com/nguyentranchung/laravel-decomposer/issues) & [labels](https://github.com/nguyentranchung/laravel-decomposer/labels) with the appropriate titles , where you can contribute your ideas & suggestions or let us know if you are working on a PR for that. Always more than happy to hear & learn new things from the community.
-
 ## Installation
 
 You can install this package via composer:
@@ -47,7 +36,7 @@ You can install this package via composer:
 composer require nguyentranchung/laravel-decomposer
 ```
 
-Next, add the service provider:
+Next, Edit config/app.php (Skip this step if you are using laravel 5.5+) Service provider:
 
 ```php
 // In config/app.php ( Thank you for considering this package! Have a great day :) )
@@ -58,6 +47,12 @@ Next, add the service provider:
      */
     Lubusin\Decomposer\DecomposerServiceProvider::class,
 ];
+```
+
+Publish assets
+
+```bash
+php artisan vendor:publish --provider=Lubusin\Decomposer\DecomposerServiceProvider
 ```
 
 Add a route in your web routes file:
