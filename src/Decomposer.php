@@ -3,6 +3,7 @@
 namespace Lubusin\Decomposer;
 
 use App;
+use Cache;
 use Illuminate\Support\Str;
 
 class Decomposer
@@ -39,7 +40,9 @@ class Decomposer
         $reportArray['Laravel Environment'] = self::getLaravelEnv($version);
         $reportArray['Installed Packages'] = self::getPackagesArray($composerArray['require']);
 
-        empty(self::getExtraStats()) ? '' : $reportArray['Extra Stats'] = self::getExtraStats();
+        if (!empty(self::getExtraStats())) {
+            $reportArray['Extra Stats'] = self::getExtraStats();
+        }
 
         return $reportArray;
     }
@@ -172,6 +175,10 @@ class Decomposer
 
     public static function getLaravelEnv($decomposerVersion)
     {
+        $folderSize = Cache::remember('decompser.folderSize', now()->addHours(1), function () {
+            return self::folderSize(base_path());
+        });
+
         return array_merge([
             'version' => App::version(),
             'timezone' => config('app.timezone'),
@@ -179,7 +186,7 @@ class Decomposer
             'storage_dir_writable' => is_writable(base_path('storage')),
             'cache_dir_writable' => is_writable(base_path('bootstrap/cache')),
             'decomposer_version' => $decomposerVersion,
-            'app_size' => self::sizeFormat(self::folderSize(base_path())),
+            'app_size' => self::sizeFormat($folderSize),
         ], self::getLaravelExtras());
     }
 
