@@ -13,24 +13,20 @@ class DecomposerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/views', 'decomposer');
-        $this->publishes([
-            $this->getConfigFile() => config_path('decomposer.php'),
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            echo __DIR__.'/../config/decomposer.php';
+
+            $this->publishes([
+                __DIR__.'/../config/decomposer.php' => config_path('decomposer.php'),
+            ], 'config');
+        }
     }
 
     public function register()
     {
         $this->mergeConfigFrom(
-            $this->getConfigFile(),
+            __DIR__.'/../config/decomposer.php',
             'decomposer'
         );
-    }
-
-    /**
-     * @return string
-     */
-    protected function getConfigFile()
-    {
-        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'decomposer.php';
     }
 }
