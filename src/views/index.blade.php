@@ -1,4 +1,4 @@
-@extends('decomposer::layout')
+@extends(config('decomposer.layout'))
 
 @section(config('decomposer.content_section'))
     <div class="row">
