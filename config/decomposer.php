@@ -6,10 +6,13 @@ return [
     'content_section' => 'content',
 
     'folders_exclude' => [
-        'bootstrap',
+        base_path('bootstrap'),
         'node_modules',
         'vendor',
-        'storage',
+        base_path('storage/debugbar'),
+        base_path('storage/framework'),
+        base_path('storage/logs'),
+        base_path('storage/medialibrary'),
         'folder/path',
     ],
 ];
