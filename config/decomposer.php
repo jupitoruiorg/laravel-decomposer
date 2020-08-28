@@ -1,5 +1,7 @@
 <?php
 return [
+    'view' => 'decomposer::index',
+
     'folders_exclude' => [
         base_path() . '/bootstrap',
         base_path() . '/node_modules',
