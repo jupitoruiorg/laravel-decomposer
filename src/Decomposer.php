@@ -3,6 +3,7 @@
 namespace Lubusin\Decomposer;
 
 use App;
+use Illuminate\Support\Str;
 
 class Decomposer
 {
@@ -276,9 +277,10 @@ class Decomposer
     {
         $size = 0;
         foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
-            if (!is_file($each) && in_array($each, config('decomposer.folders_exclude'))) {
+            if (!is_file($each) && Str::contains($each, config('decomposer.folders_exclude'))) {
                 continue;
             }
+
             $size += is_file($each) ? filesize($each) : self::folderSize($each);
         }
         return $size;
