@@ -2,8 +2,8 @@
 
 namespace Lubusin\Decomposer\Controllers;
 
-use Lubusin\Decomposer\Decomposer;
 use Illuminate\Routing\Controller;
+use Lubusin\Decomposer\Decomposer;
 
 class DecomposerController extends Controller
 {

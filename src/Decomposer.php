@@ -40,7 +40,7 @@ class Decomposer
         $reportArray['Laravel Environment'] = self::getLaravelEnv($version);
         $reportArray['Installed Packages'] = self::getPackagesArray($composerArray['require']);
 
-        if (!empty(self::getExtraStats())) {
+        if (! empty(self::getExtraStats())) {
             $reportArray['Extra Stats'] = self::getExtraStats();
         }
 
@@ -133,6 +133,7 @@ class Decomposer
     public static function getComposerArray()
     {
         $json = file_get_contents(base_path('composer.json'));
+
         return json_decode($json, true);
     }
 
@@ -265,12 +266,12 @@ class Decomposer
     /**
      * Check if SSL is installed or not
      *
-     * @return boolean
+     * @return bool
      */
 
     private static function checkSslIsInstalled()
     {
-        return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off');
+        return (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off');
     }
 
     /**
@@ -284,12 +285,13 @@ class Decomposer
     {
         $size = 0;
         foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
-            if (!is_file($each) && Str::contains($each, config('decomposer.folders_exclude'))) {
+            if (! is_file($each) && Str::contains($each, config('decomposer.folders_exclude'))) {
                 continue;
             }
 
             $size += is_file($each) ? filesize($each) : self::folderSize($each);
         }
+
         return $size;
     }
 
